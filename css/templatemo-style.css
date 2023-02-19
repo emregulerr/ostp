@@ -1,0 +1,535 @@
+/*
+
+Boxer Template
+
+https://www.templatemo.com/tm-446-boxer
+
+*/
+
+body {
+    background: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.tm-white a {
+    color: #fff;
+}
+
+/* start h1 group */
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-weight: bold;
+}
+
+/* end h1 group */
+
+p {
+    line-height: 1.6em;
+}
+
+/* img */
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* img */
+
+/* overlay */
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+
+/* over lay */
+
+/* start page container */
+
+@media (min-width: 768px) {
+    .container {
+        width: 700px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 900px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1000px;
+    }
+}
+
+/* end page container */
+
+/* start preloader */
+
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: row nowrap;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    /*justify-content: center;*/
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background: none repeat scroll 0 0 #fff;
+}
+
+.sk-spinner-rotating-plane.sk-spinner {
+    width: 30px;
+    height: 30px;
+    background-color: #364F6B;
+    margin: 0 auto;
+    -webkit-animation: sk-rotatePlane 1.2s infinite ease-in-out;
+    animation: sk-rotatePlane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-rotatePlane {
+    0% {
+        -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+        transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    }
+
+    50% {
+        -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+        transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    }
+
+    100% {
+        -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+        transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    }
+}
+
+@keyframes sk-rotatePlane {
+    0% {
+        -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+        transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    }
+
+    50% {
+        -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+        transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    }
+
+    100% {
+        -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+        transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    }
+}
+
+/* end preloader */
+
+/* start navigation */
+
+.navbar-default {
+    background: #fff;
+    border: none;
+    box-shadow: 0px 2px 8px 0px rgba(50, 50, 50, 0.08);
+    margin: 0 !important;
+}
+
+.navbar-default .navbar-brand {
+    color: #364F6B;
+    font-size: 30px;
+    font-weight: bold;
+    height: 70px;
+    line-height: 35px;
+}
+
+.navbar-default .nav li a {
+    color: #666;
+    font-size: 13px;
+    font-weight: bold;
+    height: 70px;
+    line-height: 40px;
+}
+
+.navbar-default .nav li a:hover,
+.navbar-default .nav li a:focus,
+.navbar-default .nav li a.current {
+    color: #364F6B;
+}
+
+.navbar-default .navbar-toggle {
+    border: none;
+    padding-top: 20px;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background: #364F6B;
+    border-color: transparent;
+}
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: transparent
+}
+
+/* end navigation */
+
+/* start nedir */
+
+#nedir {
+    background: url('../images/bg.jpg') no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #fff;
+    margin-top: 66px;
+    text-align: center;
+    width: 100%;
+}
+
+#nedir p {
+    font-weight: 400;
+    font-style: italic;
+    line-height: 2em;
+}
+
+#nedir img {
+    display: inline-block;
+    margin-top: 30px;
+}
+
+/* end nedir */
+
+/* start divider */
+
+#divider {
+    text-align: center;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+#divider .fa {
+    color: #364F6B;
+    font-size: 60px;
+}
+
+#divider h3 {
+    font-size: 20px;
+}
+
+/* end divider */
+
+/* start ozellikler1 */
+
+#ozellikler1 {
+    background: #f8f8f8;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+#ozellikler1 p {
+    padding-top: 10px;
+    font-size: 14px;
+}
+
+#ozellikler1 span {
+    float: left;
+}
+
+#ozellikler1 .fa {
+    background: #364F6B;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin-right: 20px;
+}
+
+/* end ozellikler1 */
+
+/* start ozellikler12 */
+
+#ozellikler2 {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+#ozellikler2 p {
+    padding-top: 10px;
+    font-size: 14px;
+}
+
+#ozellikler2 span {
+    float: left;
+}
+
+#ozellikler2 .fa {
+    background: #364F6B;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin-right: 20px;
+}
+
+/* end ozellikler12 */
+
+/* start istatistikler */
+#istatistikler
+    {
+        background: #f8f8f8;
+        text-align: center;
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+#istatistikler h2
+    {
+        padding-bottom: 60px;
+    }
+#istatistikler .istatistikler
+    {
+        background: #fff;
+    }
+#istatistikler .active
+    {
+        position: relative;
+        bottom: 20px;
+    }
+#istatistikler .istatistikler .istatistikler-title
+    {
+        background: #364F6B;
+        color: #fff;
+        font-weight: bold;
+        padding: 30px;
+    }
+#istatistikler .istatistikler .istatistikler-title p
+    {
+        font-size: 20px;
+    }
+#istatistikler .istatistikler ul
+    {
+        padding: 0;
+        margin: 0;
+    }
+#istatistikler .istatistikler ul li
+    {
+        display: block;
+        list-style: none;
+        padding: 16px;
+    }
+#istatistikler .istatistikler .btn
+    {
+        background: transparent;
+        border: 1px solid #364F6B;
+        border-radius: 0px;
+        color: #364F6B;
+        font-weight: bold;
+        padding-right: 40px;
+        padding-left: 40px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        transition: all 0.3s ease;
+    }
+#istatistikler .istatistikler .btn:hover {
+    background: #364F6B;
+    color: #fff;
+}
+/* end istatistikler */
+
+/* start download */
+
+#download {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+#download h2 {
+    padding-bottom: 20px;
+}
+
+#download .btn {
+    border-radius: 0px;
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 10px 40px 10px 40px;
+}
+
+/* end download */
+
+/* start iletisim */
+
+#iletisim,
+#login {
+    background: url('../images/bg.jpg') no-repeat top;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #fff;
+}
+
+#iletisim h2 {
+    padding-bottom: 10px;
+}
+
+#iletisim address {
+    padding-top: 20px;
+}
+
+#iletisim address .fa {
+    background: #364F6B;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin-top: 6px;
+    margin-right: 10px;
+}
+
+#iletisim .iletisim-form,
+#login .iletisim-form {
+    padding-top: 40px;
+}
+
+#iletisim .form-control,
+#login .form-control {
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+    margin-bottom: 20px;
+}
+
+#iletisim input,
+#login input {
+    height: 50px;
+}
+
+#iletisim input[type="submit"],
+#login input[type="submit"] {
+    background: #364F6B;
+    color: #fff;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+#iletisim input[type="submit"]:hover,
+#login input[type="submit"]:hover {
+    background: #107DB6;
+}
+
+#login .contact-form{
+    padding-top: 40px;
+}
+
+.g-recaptcha {
+    transform-origin: left top;
+    -webkit-transform-origin: left top;
+}
+
+/* end iletisim */
+
+/* start footer */
+
+footer {
+    background: #fff;
+    font-weight: 400;
+    text-align: center;
+    padding: 20px;
+}
+
+/* end footer */
+
+/* start sayac */
+
+.sayac{
+    font: 800 40px system-ui;
+}
+.sayac::after{content:"+"}
+
+/* end sayac */
+
+.textshadow {
+   color: transparent !important;
+   text-shadow: 0 0 5px rgba(0,0,0,0.8) !important;
+}
+
+a.nav-link.active{font-weight: bold;}
+
+@media screen and (max-width: 991px) {
+    .templatemo-box {
+        margin-bottom: 30px;
+    }
+
+    #signup .active {
+        bottom: 0;
+    }
+
+    .signup {
+        margin-bottom: 20px;
+    }
+
+    #ozellikler1 img,
+    #download img {
+        margin-top: 30px;
+    }
+
+    #ozellikler12 img {
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .navbar-default .nav li a {
+        height: auto;
+        line-height: 2em;
+    }
+
+    #ozellikler1,
+    #signup,
+    #download {
+        padding-top: 20px;
+        padding-bottom: 40px;
+    }
+
+    #iletisim .overlay {
+        padding-top: 40px;
+    }
+}
+
+/* start media 360 */
+
+@media screen and (max-width: 360px) {
+    .signup {
+        padding-bottom: 40px;
+    }
+}
+
+/* end media 360 */
