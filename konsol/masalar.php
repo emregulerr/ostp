@@ -6,7 +6,7 @@ echo "<div class=\"welcomeBox\"><b>Masalar</b></div>";
 
 if(isset($_POST["masaEkle"])){  
 
-	$ekle=$conn->query("INSERT INTO masalar (uid, tarife, images/konsol, masaadi) VALUES ('$userid', '$_POST[masaTarife]', '$_POST[masaresim]', '$_POST[masaAd]')"); 
+	$ekle=$conn->query("INSERT INTO masalar (uid, tarife, resim, masaadi) VALUES ('$userid', '$_POST[masaTarife]', '$_POST[masaresim]', '$_POST[masaAd]')"); 
 
 	if(!$ekle){ echo'
 
@@ -32,7 +32,7 @@ if($query){?>
 
     <div class="container">
         <div class="form-group form-group-lg">
-        <select name="masaimages/konsol" required>
+        <select name="masaresim" required>
 
             <option value="" disabled selected hidden>Masa Türü</option>
 
@@ -96,7 +96,7 @@ echo'<div style="max-width:100% !important;"><table class="veri" id="records"><t
     <th></th>
     </tr></thead><tbody>';
     foreach($query as $row){
-        echo'<tr><td width="5%" style="min-width:50px;max-width:150px;"><img src="'. $row["images/konsol"] .'" width="100%"></td><td>'. $row["masaadi"] .'</td><td><a href="masalar.php?sil='. $row["id"] .'"><i style="color:red;" class="fa-solid fa-trash-can fa-lg"></i></a></td></tr>';
+        echo'<tr><td width="5%" style="min-width:50px;max-width:150px;"><img src="'. $row["resim"] .'" width="100%"></td><td>'. $row["masaadi"] .'</td><td><a href="masalar.php?sil='. $row["id"] .'"><i style="color:red;" class="fa-solid fa-trash-can fa-lg"></i></a></td></tr>';
     }
 echo'</tbody></table></div>';
 }else{

@@ -39,10 +39,6 @@
                     if(isset($_GET["giris"])){
                         if($_GET["giris"]=="basarisiz"){
                             echo'<div class="alert alert-danger"><strong>Hatalı Giriş!</strong> Girdiğiniz bilgiler yanlış veya böyle bir üyelik bulunmamaktadır.</div>';
-                        }elseif($_GET["giris"]=="son"){
-                            echo'<div class="alert alert-danger"><strong>Üyelik Süresi Bitmiş!</strong> Üyeliğinizi devam ettirmek için lütfen <a href="//shopier.com/987008" class="alert-link">tıklayın</a>.</div>';
-                        }elseif($_GET["giris"]=="pasif"){
-                            echo'<div class="alert alert-danger"><strong>Üyelik Pasif!</strong> Üyeliğiniz sistem tarafından pasifleştirilmiştir. Lütfen varsa gecikmiş ödemelerinizi yapınız, deneme üyeliği hakkınız dolduysa <a href="//shopier.com/987008" class="alert-link" target="_blank">üyelik satın alınız</a>. Bir yanlışlık olduğunu düşünüyorsanız lütfen bizimle iletişime geçiniz.</div>';
                         }
                     }
                 ?>
