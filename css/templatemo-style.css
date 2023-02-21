@@ -203,8 +203,7 @@ img {
 #nedir {
     background: url('../images/bg.jpg') no-repeat;
     background-size: cover;
-    background-attachment: fixed;
-    background-position: left bottom;
+    background-position: left center;
     color: #fff;
     margin-top: 66px;
     text-align: center;
@@ -392,8 +391,7 @@ img {
 #login {
     background: url('../images/bg.jpg') no-repeat;
     background-size: cover;
-    background-attachment: fixed;
-    background-position: right; bottom;
+    background-position: right; center;
     color: #fff;
 }
 
