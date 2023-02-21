@@ -16,7 +16,7 @@ if(isset($_POST["tarifeEkle"])){
 
 	if(!$ekle){
 
-		echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa fa-exclamation-triangle"></i> Bir hata oluştu!</span><br /><br />';
+		echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa-solid fa-exclamation-triangle"></i> Bir hata oluştu!</span><br /><br />';
 
 	}
 
@@ -44,7 +44,7 @@ if(isset($_POST["tarifeEkle"])){
 
 	}else{
 
-        echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa fa-exclamation-triangle"></i> Bir hata oluştu!</span><br /><br />';
+        echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa-solid fa-triangle-exclamation"></i> Bir hata oluştu!</span><br /><br />';
 
     }
 
@@ -82,7 +82,7 @@ echo'<div style="max-width:100% !important;"><table id="records" class="veri">
 </tr></thead><tbody>';
 
 foreach($query as $row){
-	echo'<tr><td>'. $row["tarifeadi"] .'</td><td>'. $row["bfiyat"] .'</td><td>'. $row["fiyat"] .'</td><td><a href="tarifeler.php?sil='. $row["id"] .'"><i style="color:red;" class="fa fa-trash-o fa-lg"></i></a></td></tr>';
+	echo'<tr><td>'. $row["tarifeadi"] .'</td><td>'. $row["bfiyat"] .'</td><td>'. $row["fiyat"] .'</td><td><a href="tarifeler.php?sil='. $row["id"] .'"><i style="color:red;" class="fa-solid fa-trash-can fa-lg"></i></a></td></tr>';
 }
 
 echo'</tbody></table></div>';

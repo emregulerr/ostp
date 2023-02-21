@@ -27,7 +27,7 @@ if(isset($_POST["urunSat"])){
     }else{    
         $ekle=$conn->query("INSERT INTO asatislar (uid, masaid, urunid, urunadi, masaadi, adet, birfiyat, fiyat) VALUES ('$_SESSION[patron]', '$masa', '$urun', '$urunAdi', '$masaAdi', '$adet', '$birimFiyat', '$satisFiyat')");
         if(!$ekle){
-             echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa fa-exclamation-triangle"></i> Bir hata oluştu!</span><br /><br />'; 
+             echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa-solid fa-triangle-exclamation"></i> Bir hata oluştu!</span><br /><br />'; 
         }
     }
 }elseif(isset($_POST["satisGuncelle"])){
@@ -52,7 +52,7 @@ if(isset($_POST["urunSat"])){
 			echo "<script>window.location.href = 'satislar.php';</script>";
 		}
 	}else{
-        echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa fa-exclamation-triangle"></i> Bir hata oluştu!</span><br /><br />';
+        echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa-solid fa-triangle-exclamation"></i> Bir hata oluştu!</span><br /><br />';
     }
 	 
 }
@@ -95,10 +95,10 @@ if(isset($_POST["urunSat"])){
             foreach($query as $row){
                 $tKafeterya+=getFloat($row["fiyat"]);
                 if((isset($_GET["ac"])) && ($_GET["ac"] == $row["id"])){
-                   echo'<tr><td>'. $row["masaadi"] .'</td><td>'. $row["urunadi"] .'</td><td><input type="hidden" name="bfiyat'.$row["id"].'" value="'. $row["birfiyat"] .'"><input type="number" step="1"  value="'. $row["adet"] .'" placeholder="'. $row["adet"] .'" name="stokg'.$row["id"].'" size="10" autocomplete="on" min="1" required></td><td>'.$row["birfiyat"].'</td><td>'.$row["fiyat"].'</td><td><a href="#" class="satisGuncelle" name="satisGuncelle" data-satisid="'.$row["id"].'"><i class="fa fa-floppy-o fa-lg" aria-hidden="true" style="color:green;"></i></a></td><td><a href="satislar.php?sil='. $row["id"] .'"><i style="color:red;" class="fa fa-trash-o fa-lg"></i></a></td></tr>'; 
+                   echo'<tr><td>'. $row["masaadi"] .'</td><td>'. $row["urunadi"] .'</td><td><input type="hidden" name="bfiyat'.$row["id"].'" value="'. $row["birfiyat"] .'"><input type="number" step="1"  value="'. $row["adet"] .'" placeholder="'. $row["adet"] .'" name="stokg'.$row["id"].'" size="10" autocomplete="on" min="1" required></td><td>'.$row["birfiyat"].'</td><td>'.$row["fiyat"].'</td><td><a href="#" class="satisGuncelle" name="satisGuncelle" data-satisid="'.$row["id"].'"><i class="fa-solid fa-floppy-disk fa-lg" aria-hidden="true" style="color:green;"></i></a></td><td><a href="satislar.php?sil='. $row["id"] .'"><i style="color:red;" class="fa-solid fa-trash-can fa-lg"></i></a></td></tr>'; 
                 }else{
                     echo'
-                    <tr><td>'. $row["masaadi"] .'</td><td>'. $row["urunadi"] .'</td><td>'. $row["adet"] .'</td><td>'. $row["birfiyat"] .'</td><td>'. $row["fiyat"] .'</td><td><a href="satislar.php?ac='. $row["id"] .'"><i style="color:black;" class="fa fa-pencil-square-o fa-lg"></i></a></td><td><a href="satislar.php?sil='. $row["id"] .'"><i style="color:red;" class="fa fa-trash-o fa-lg"></i></a></td></tr>';
+                    <tr><td>'. $row["masaadi"] .'</td><td>'. $row["urunadi"] .'</td><td>'. $row["adet"] .'</td><td>'. $row["birfiyat"] .'</td><td>'. $row["fiyat"] .'</td><td><a href="satislar.php?ac='. $row["id"] .'"><i style="color:black;" class="fa-solid fa-edit fa-lg"></i></a></td><td><a href="satislar.php?sil='. $row["id"] .'"><i style="color:red;" class="fa-solid fa-trash-can fa-lg"></i></a></td></tr>';
                 }
             }
             echo'</tbody></table></div>';

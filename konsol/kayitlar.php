@@ -23,7 +23,7 @@ echo'<div style="width:100%;"><table id="records" class="veri" width="100%">
 <tbody>';
 foreach($query as $row){
     echo'
-    <tr><td>'. $row["masa"] .'</td><td>'. date_tr('d.m.Y H:i', strtotime($row["azaman"])) .'</td><td>'. date_tr('d.m.Y H:i', strtotime($row["kzaman"])) .'</td><td>₺'. $row["ucret"] .'</td><td><a href="kayitlar.php?sil='. $row["id"] .'"><i style="color:red;" class="fa fa-trash-o fa-lg"></i></a></td></tr>';
+    <tr><td>'. $row["masa"] .'</td><td>'. date_tr('d.m.Y H:i', strtotime($row["azaman"])) .'</td><td>'. date_tr('d.m.Y H:i', strtotime($row["kzaman"])) .'</td><td>₺'. $row["ucret"] .'</td><td><a href="kayitlar.php?sil='. $row["id"] .'"><i style="color:red;" class="fa-solid fa-trash-can fa-lg"></i></a></td></tr>';
    $toplam+=temizle($row["ucret"]);
 }
 echo'</tbody><tfoot><tr><th align="right" colspan="2"></th><th align="right" colspan="3"></th></tr></tfoot></table></div>';

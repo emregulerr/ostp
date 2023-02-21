@@ -6,11 +6,11 @@ echo "<div class=\"welcomeBox\"><b>Masalar</b></div>";
 
 if(isset($_POST["masaEkle"])){  
 
-	$ekle=$conn->query("INSERT INTO masalar (uid, tarife, images/konsol, masaadi) VALUES ('$userid', '$_POST[masaTarife]', '$_POST[masaimages/konsol]', '$_POST[masaAd]')"); 
+	$ekle=$conn->query("INSERT INTO masalar (uid, tarife, images/konsol, masaadi) VALUES ('$userid', '$_POST[masaTarife]', '$_POST[masaresim]', '$_POST[masaAd]')"); 
 
 	if(!$ekle){ echo'
 
-<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa fa-exclamation-triangle"></i> Bir hata oluştu!</span><br /><br />'; } }elseif(isset($_GET["sil"])){ $silinecek=$_GET['sil']; $sil=$conn->query("DELETE FROM masalar WHERE id='$silinecek'"); $sec = $conn->query("SELECT COUNT(*) FROM masalar"); $say = $sec->fetchColumn(); 
+<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa-solid fa-triangle-exclamation"></i> Bir hata oluştu!</span><br /><br />'; } }elseif(isset($_GET["sil"])){ $silinecek=$_GET['sil']; $sil=$conn->query("DELETE FROM masalar WHERE id='$silinecek'"); $sec = $conn->query("SELECT COUNT(*) FROM masalar"); $say = $sec->fetchColumn(); 
 
 if($sil){
 
@@ -24,7 +24,7 @@ if($kaydir){
 
 				}else{ echo'
 
-<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa fa-exclamation-triangle"></i> Bir hata oluştu!</span><br /><br />'; } } $query=$conn->query("SELECT * FROM tarifeler WHERE uid='$userid'")->fetchAll(PDO::FETCH_ASSOC); 
+<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa-solid fa-triangle-exclamation"></i> Bir hata oluştu!</span><br /><br />'; } } $query=$conn->query("SELECT * FROM tarifeler WHERE uid='$userid'")->fetchAll(PDO::FETCH_ASSOC); 
 
 if($query){?>
 
@@ -96,11 +96,11 @@ echo'<div style="max-width:100% !important;"><table class="veri" id="records"><t
     <th></th>
     </tr></thead><tbody>';
     foreach($query as $row){
-        echo'<tr><td width="5%" style="min-width:50px;max-width:150px;"><img src="'. $row["images/konsol"] .'" width="100%"></td><td>'. $row["masaadi"] .'</td><td><a href="masalar.php?sil='. $row["id"] .'"><i style="color:red;" class="fa fa-trash-o fa-lg"></i></a></td></tr>';
+        echo'<tr><td width="5%" style="min-width:50px;max-width:150px;"><img src="'. $row["images/konsol"] .'" width="100%"></td><td>'. $row["masaadi"] .'</td><td><a href="masalar.php?sil='. $row["id"] .'"><i style="color:red;" class="fa-solid fa-trash-can fa-lg"></i></a></td></tr>';
     }
 echo'</tbody></table></div>';
 }else{
-    echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa fa-exclamation-triangle"></i> Tarife bulunamadı! Lütfen önce <a href="tarifeler.php">tarife ekleyin.</a></span><br /><br />';
+    echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa-solid fa-triangle-exclamation"></i> Tarife bulunamadı! Lütfen önce <a href="tarifeler.php">tarife ekleyin.</a></span><br /><br />';
 }
 ?>
 <script type="text/javascript">$("#records").DataTable({pageLength:5});</script>

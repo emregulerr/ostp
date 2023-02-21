@@ -76,7 +76,7 @@ if($query){
 
             $gzf=gzf(strtotime($bzaman),$bfiyat,$fiyat,$aYuvHas,$kafeterya);
 
-            echo '<a href="masa.php?masa='.$masaid.'" class="stdKutu aktif"><img src="'.$resim.'">'.$masaadi.'<div class="priceTag"><i class="fa fa-try"></i>&ensp;'.money_format('%!n',temizle($gzf["ucret"])).'</div><div class="timeTag"><i class="fa fa-clock-o"></i>&ensp;'.$gzf["sure"].'</div></a>';
+            echo '<a href="masa.php?masa='.$masaid.'" class="stdKutu aktif"><img src="'.$resim.'">'.$masaadi.'<div class="priceTag"><i class="fa-solid fa-try"></i>&ensp;'.money_format('%!n',temizle($gzf["ucret"])).'</div><div class="timeTag"><i class="fa-solid fa-clock"></i>&ensp;'.$gzf["sure"].'</div></a>';
 
         }else{
 
@@ -90,7 +90,7 @@ if($query){
 
 }else{
 
-    echo '<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa fa-exclamation-triangle"></i>  Masa bulunamadı! Lütfen önce <a href="masalar.php">masa ekleyin</a>.</span>';
+    echo '<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa-solid fa-triangle-exclamation"></i>  Masa bulunamadı! Lütfen önce <a href="masalar.php">masa ekleyin</a>.</span>';
 
 }
 

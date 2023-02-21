@@ -72,7 +72,7 @@ if(isset($_POST["satisGuncelle"])){
 
 	}else{
 
-        echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa fa-exclamation-triangle"></i> Bir hata oluştu!</span><br /><br />';
+        echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa-solid fa-triangle-exclamation"></i> Bir hata oluştu!</span><br /><br />';
 
     }
 }elseif(isset($_POST["tarifedegis"])){ 
@@ -91,7 +91,7 @@ if(isset($_POST["satisGuncelle"])){
         $ekle=$conn->query("INSERT INTO asatislar (uid, masaid, urunadi, masaadi, adet, birfiyat, fiyat) VALUES ('$_SESSION[patron]', '$masaid', '$urunAdi', '$masaadi', '$adet', '$birimFiyat', '$satisFiyat')");
     }else{$ekle=true;}
     if(!$ekle){
-        echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa fa-exclamation-triangle"></i> Bir hata oluştu!</span><br /><br />'; 
+        echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa-solid fa-triangle-exclamation"></i> Bir hata oluştu!</span><br /><br />'; 
     }else{
         $nst = $conn->exec("UPDATE masalar set azaman ='".$yeniZaman."', tarife='".$hedefID."' where id = '". $masaid ."'");
         echo "<script>window.location.href = 'masa.php?masa=$masaid';</script>";
@@ -101,7 +101,7 @@ if(isset($_POST["satisGuncelle"])){
     $yeniZaman= date("Y-m-d H:i:00", strtotime($_POST["newSTime"]));
     $nst = $conn->exec("UPDATE masalar set azaman ='".$yeniZaman."' where id = '". $masaid ."'");
     if(!$nst){
-        echo '<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa fa-exclamation-triangle"></i>  Başlangıç saati değiştirilemedi!</span>';
+        echo '<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa-solid fa-triangle-exclamation"></i>  Başlangıç saati değiştirilemedi!</span>';
     }else{
         echo "<script>window.location.href = 'masa.php?masa=$masaid';</script>";
     }
@@ -112,27 +112,27 @@ if(isset($_POST["satisGuncelle"])){
 
 	echo"<div class=\"stdKutu\"><img src=\"$resimurl\">$masaadi</div>";
 
-	echo"<a id=\"bsaat\" href=\"#\" class=\"stdKutu\"><i class=\"fa fa-clock-o fa-3x\" aria-hidden=\"true\"></i><br />".date_tr('j F \\| H:i', strtotime($bzaman))."</a>";
+	echo"<a id=\"bsaat\" href=\"#\" class=\"stdKutu\"><i class=\"fa-solid fa-clock fa-3x\" aria-hidden=\"true\"></i><br />".date_tr('j F \\| H:i', strtotime($bzaman))."</a>";
 
 	$gzf=gzf(strtotime($bzaman),$bfiyat,$fiyat,$aYuvHas,$kafeterya);
 
-	echo"<div class=\"stdKutu\"><i class=\"fa fa-hourglass fa-spin fa-3x\" aria-hidden=\"true\"></i><br /><span id=\"masaSure\">".$gzf["sure"]."</span></div>";
+	echo"<div class=\"stdKutu\"><i class=\"fa-solid fa-hourglass fa-spin fa-3x\" aria-hidden=\"true\"></i><br /><span id=\"masaSure\">".$gzf["sure"]."</span></div>";
 
-	echo"<a href=\"satislar.php?masa=$masaid\" class=\"stdKutu\"><i class=\"fa fa-coffee fa-3x\" aria-hidden=\"true\"></i><br />Kafeterya</a>";
+	echo"<a href=\"satislar.php?masa=$masaid\" class=\"stdKutu\"><i class=\"fa-solid fa-coffee fa-3x\" aria-hidden=\"true\"></i><br />Kafeterya</a>";
 
-//	echo"<div class=\"stdKutu aktif\"><i class=\"fa fa-try fa-3x\" aria-hidden=\"true\"></i><br /><span id=\"masaUcret\">".money_format('%!n',temizle($gzf["ucret"]))."</span></div>";
+//	echo"<div class=\"stdKutu aktif\"><i class=\"fa-solid fa-try fa-3x\" aria-hidden=\"true\"></i><br /><span id=\"masaUcret\">".money_format('%!n',temizle($gzf["ucret"]))."</span></div>";
 
-	echo"<a id=\"tarifeDB\" href=\"#\" class=\"stdKutu aktif\"><div class=\"priceTag\">Tarife: $tarifeadi</div><i class=\"fa fa-try fa-3x\" aria-hidden=\"true\"></i><br /><span id=\"masaUcret\">".money_format('%!n',temizle($gzf["ucret"]))."</span></a>";
+	echo"<a id=\"tarifeDB\" href=\"#\" class=\"stdKutu aktif\"><div class=\"priceTag\">Tarife: $tarifeadi</div><i class=\"fa-solid fa-try fa-3x\" aria-hidden=\"true\"></i><br /><span id=\"masaUcret\">".money_format('%!n',temizle($gzf["ucret"]))."</span></a>";
 
-	echo"<a id=\"mAktar\" href=\"#\" class=\"stdKutu masaAktar\"><i class=\"fa fa-exchange fa-3x\" aria-hidden=\"true\"></i><br />Aktar/Birleştir</a>";	
+	echo"<a id=\"mAktar\" href=\"#\" class=\"stdKutu masaAktar\"><i class=\"fa-solid fa-exchange fa-3x\" aria-hidden=\"true\"></i><br />Aktar/Birleştir</a>";	
 
-    echo"<a href=\"masa.php?masa=$masaid&kapat=1\" class=\"stdKutu masaKapat\"><i class=\"fa fa-close fa-3x\" aria-hidden=\"true\"></i><br />Masayı Kapat</a>";
+    echo"<a href=\"masa.php?masa=$masaid&kapat=1\" class=\"stdKutu masaKapat\"><i class=\"fa-solid fa-close fa-3x\" aria-hidden=\"true\"></i><br />Masayı Kapat</a>";
 
 	echo"</div> 
 
 	<div id=\"masaSaatD\" class=\"stdKutu popUp\">
 
-		<a href=\"#\" id=\"mSDKapat\" class=\"popUpKapat\"><i class=\"fa fa-close fa-2x\" aria-hidden=\"true\"></i></a>
+		<a href=\"#\" id=\"mSDKapat\" class=\"popUpKapat\"><i class=\"fa-solid fa-close fa-2x\" aria-hidden=\"true\"></i></a>
 
 		<br /> 
 
@@ -155,7 +155,7 @@ if(isset($_POST["satisGuncelle"])){
 
 	<div id=\"masaAB\" class=\"stdKutu popUp\">
 
-		<a href=\"#\" id=\"mABKapat\" class=\"popUpKapat\"><i class=\"fa fa-close fa-2x\" aria-hidden=\"true\"></i></a>
+		<a href=\"#\" id=\"mABKapat\" class=\"popUpKapat\"><i class=\"fa-solid fa-close fa-2x\" aria-hidden=\"true\"></i></a>
 
 		<br /> 
 
@@ -185,7 +185,7 @@ if(isset($_POST["satisGuncelle"])){
 // FARKLI TARİFE İLE MASA AÇMA POPUP
 echo "<div id=\"tarifeD\" class=\"stdKutu popUp\">
 
-		<a href=\"#\" id=\"tDKapat\" class=\"popUpKapat\"><i class=\"fa fa-close fa-2x\" aria-hidden=\"true\"></i></a>
+		<a href=\"#\" id=\"tDKapat\" class=\"popUpKapat\"><i class=\"fa-solid fa-close fa-2x\" aria-hidden=\"true\"></i></a>
 
 		<br /> 
 
@@ -231,17 +231,17 @@ if(isset($_GET["kapat"])){
                     if($sil){
                         echo "<script>window.location.href = 'index.php';</script>";
                     }else{
-                       echo '<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa fa-exclamation-triangle"></i>  Kafeterya kayıtlarında hata oluştu!</span>';
+                       echo '<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa-solid fa-triangle-exclamation"></i>  Kafeterya kayıtlarında hata oluştu!</span>';
                     }
                 }else{
-                    echo '<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa fa-exclamation-triangle"></i>  Masa bilgisi kaydedilemedi!</span>';
+                    echo '<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa-solid fa-triangle-exclamation"></i>  Masa bilgisi kaydedilemedi!</span>';
                 }
             }else{
                 echo "<script>window.location.href = 'index.php';</script>";
             }
         }else{
 
-            echo '<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa fa-exclamation-triangle"></i>  Masa kapatılamadı!</span>';
+            echo '<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa-solid fa-triangle-exclamation"></i>  Masa kapatılamadı!</span>';
 
         }
     }else{
@@ -290,13 +290,13 @@ if($query){
 
            echo'
 
-            <form method="post"><input type="hidden" name="satisid" value="'. $row["id"] .'"><input type="hidden" name="bfiyat" value="'. $row["birfiyat"] .'"><tr><td>'. $row["urunadi"] .'</td><td><input type="number" step="1"  value="'. $row["adet"] .'" placeholder="'. $row["adet"] .'" name="stokg" size="10" autocomplete="on" min="1" required></td><td>'.$row["birfiyat"].'</td><td>'.$row["fiyat"].'</td><td><button name="satisGuncelle" type="submit" formaction="masa.php?masa='.$masaid.'"><i class="fa fa-floppy-o fa-lg" aria-hidden="true"></i></button></td><td><a href="masa.php?masa='.$masaid.'&sil='. $row["id"] .'"><i style="color:red;" class="fa fa-trash-o fa-lg"></i></a></td></tr></form>'; 
+            <form method="post"><input type="hidden" name="satisid" value="'. $row["id"] .'"><input type="hidden" name="bfiyat" value="'. $row["birfiyat"] .'"><tr><td>'. $row["urunadi"] .'</td><td><input type="number" step="1"  value="'. $row["adet"] .'" placeholder="'. $row["adet"] .'" name="stokg" size="10" autocomplete="on" min="1" required></td><td>'.$row["birfiyat"].'</td><td>'.$row["fiyat"].'</td><td><button name="satisGuncelle" type="submit" formaction="masa.php?masa='.$masaid.'"><i class="fa-solid fa-floppy-disk fa-lg" aria-hidden="true"></i></button></td><td><a href="masa.php?masa='.$masaid.'&sil='. $row["id"] .'"><i style="color:red;" class="fa-solid fa-trash-can fa-lg"></i></a></td></tr></form>'; 
 
         }else{
 
             echo'
 
-            <tr><td>'. $row["urunadi"] .'</td><td>'. $row["adet"] .'</td><td>'. $row["birfiyat"] .'</td><td>'. $row["fiyat"] .'</td><td><a href="masa.php?masa='.$masaid.'&ac='. $row["id"] .'"><i style="color:black;" class="fa fa-pencil-square-o fa-lg"></i></a></td><td><a href="masa.php?masa='.$masaid.'&sil='. $row["id"] .'"><i style="color:red;" class="fa fa-trash-o fa-lg"></i></a></td></tr>';
+            <tr><td>'. $row["urunadi"] .'</td><td>'. $row["adet"] .'</td><td>'. $row["birfiyat"] .'</td><td>'. $row["fiyat"] .'</td><td><a href="masa.php?masa='.$masaid.'&ac='. $row["id"] .'"><i style="color:black;" class="fa-solid fa-edit fa-lg"></i></a></td><td><a href="masa.php?masa='.$masaid.'&sil='. $row["id"] .'"><i style="color:red;" class="fa-solid fa-trash-can fa-lg"></i></a></td></tr>';
 
         }
 
@@ -331,7 +331,7 @@ if(isset($_POST["aktar"])){
         $ekle=true;
     }
     if(!$ekle){
-        echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa fa-exclamation-triangle"></i> Masa Aktarılamadı!</span><br /><br />';
+        echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa-solid fa-triangle-exclamation"></i> Masa Aktarılamadı!</span><br /><br />';
     }else{
         $guncelle = $conn->exec("UPDATE asatislar SET masaid ='$hedefID', masaadi='$hedefAdi' WHERE masaid = '$masaid' AND urunid IS NULL");
         $query=$conn->query("SELECT * FROM asatislar WHERE masaid='$masaid'")->fetchAll(PDO::FETCH_ASSOC);
@@ -350,17 +350,17 @@ if(isset($_POST["aktar"])){
                 if($guncelle){
                     $sil=$conn->query("DELETE FROM asatislar WHERE masaid = '$masaid' AND urunid='$aUrunID'");
                     if(!$sil){
-                        echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa fa-exclamation-triangle"></i> Satış aktarma hatası! Eski masadan silinemedi!</span><br /><br />';
+                        echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa-solid fa-triangle-exclamation"></i> Satış aktarma hatası! Eski masadan silinemedi!</span><br /><br />';
                         $aHata=1;
                     }
                 }else{
-                    echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa fa-exclamation-triangle"></i> Satış aktarma hatası! Hedef satış güncellenemedi!</span><br /><br />';
+                    echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa-solid fa-triangle-exclamation"></i> Satış aktarma hatası! Hedef satış güncellenemedi!</span><br /><br />';
                     $aHata=1;
                 }
             }else{
                 $gun2 = $conn->exec("UPDATE asatislar SET masaid ='$hedefID', masaadi = '$hedefAdi' WHERE masaid = '$masaid' AND urunid='$aUrunID'");
                 if(!$gun2){
-                    echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa fa-exclamation-triangle"></i> Benzersiz satış aktarılamadı!</span><br /><br />';
+                    echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa-solid fa-triangle-exclamation"></i> Benzersiz satış aktarılamadı!</span><br /><br />';
                     $aHata=1;
                 }
             }
@@ -370,7 +370,7 @@ if(isset($_POST["aktar"])){
             if($kapat){
                 echo "<script>window.location.href = 'masa.php?masa=$hedefID';</script>";
             }else{
-                echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa fa-exclamation-triangle"></i> Masa Aktarıldı Ancak Eski Masa Kapatılamadı!</span><br /><br />'; 
+                echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa-solid fa-triangle-exclamation"></i> Masa Aktarıldı Ancak Eski Masa Kapatılamadı!</span><br /><br />'; 
             }
         }
     }

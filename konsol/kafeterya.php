@@ -7,7 +7,7 @@ if(isset($_POST["urunEkle"])){
     $urunFiyat=number_format($deger1,1,",",".");
 	$ekle=$conn->query("INSERT INTO urunler (uid, urunadi, adet, fiyat) VALUES ('$_SESSION[patron]', '$_POST[urun]', '$urunAdet', '$urunFiyat')");
 	if(!$ekle){
-		echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa fa-exclamation-triangle"></i> Bir hata oluştu!</span><br /><br />';
+		echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa-solid fa-triangle-exclamation"></i> Bir hata oluştu!</span><br /><br />';
 	}
 
 }elseif(isset($_POST["urunGuncelle"])){
@@ -28,7 +28,7 @@ if(isset($_POST["urunEkle"])){
 			echo "<script>window.location.href = 'kafeterya.php';</script>";
 		}
 	}else{
-        echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa fa-exclamation-triangle"></i> Bir hata oluştu!</span><br /><br />';
+        echo'<br /><br /><span style="width:100%;padding:10px;font-size:large;color:red;"><i class="fa-solid fa-triangle-exclamation"></i> Bir hata oluştu!</span><br /><br />';
     }
 	 
 }
@@ -53,9 +53,9 @@ echo'<div style="max-width:100% !important;"><table id="records" class="veri">
 </tr></thead><tbody>';
 foreach($query as $row){
     if((isset($_GET["ac"])) && ($_GET["ac"] == $row["id"]) ){
-       echo'<tr><td>'. $row["urunadi"] .'</td><td><input type="number" step="1"  value="'. $row["adet"] .'" placeholder="'. $row["adet"] .'" name="stokg'. $row["id"] .'" size="10" autocomplete="on" min="1" required></td><td><input type="number" step="0.5" value="'.getFloat($row["fiyat"]).'" placeholder="'.$row["fiyat"].'" name="fiyatg'. $row["id"] .'" size="10" autocomplete="on" min="0" required></td><td><a href="#" class="urunGuncelle" data-urunid="'. $row["id"] .'"><i class="fa fa-floppy-o fa-lg" style="color:green;" aria-hidden="true"></i></a></td><td><a href="kafeterya.php?sil='. $row["id"] .'"><i style="color:red;" class="fa fa-trash-o fa-lg"></i></a></td></tr>'; 
+       echo'<tr><td>'. $row["urunadi"] .'</td><td><input type="number" step="1"  value="'. $row["adet"] .'" placeholder="'. $row["adet"] .'" name="stokg'. $row["id"] .'" size="10" autocomplete="on" min="1" required></td><td><input type="number" step="0.5" value="'.getFloat($row["fiyat"]).'" placeholder="'.$row["fiyat"].'" name="fiyatg'. $row["id"] .'" size="10" autocomplete="on" min="0" required></td><td><a href="#" class="urunGuncelle" data-urunid="'. $row["id"] .'"><i class="fa-solid fa-floppy-disk fa-lg" style="color:green;" aria-hidden="true"></i></a></td><td><a href="kafeterya.php?sil='. $row["id"] .'"><i style="color:red;" class="fa-solid fa-trash-can fa-lg"></i></a></td></tr>'; 
     }else{
-        echo'<tr><td>'. $row["urunadi"] .'</td><td>'. $row["adet"] .'</td><td>'. $row["fiyat"] .'</td><td><a href="kafeterya.php?ac='. $row["id"] .'"><i style="color:black;" class="fa fa-pencil-square-o fa-lg"></i></a></td><td><a href="kafeterya.php?sil='. $row["id"] .'"><i style="color:red;" class="fa fa-trash-o fa-lg"></i></a></td></tr>';
+        echo'<tr><td>'. $row["urunadi"] .'</td><td>'. $row["adet"] .'</td><td>'. $row["fiyat"] .'</td><td><a href="kafeterya.php?ac='. $row["id"] .'"><i style="color:black;" class="fa-solid fa-edit fa-lg"></i></a></td><td><a href="kafeterya.php?sil='. $row["id"] .'"><i style="color:red;" class="fa-solid fa-trash-can fa-lg"></i></a></td></tr>';
     }
 }
 echo'</tbody></table></div>';?>

@@ -1,5 +1,5 @@
 <?php require_once 'ust.php'; ?>
-<div class="container pt-5 mt-5">
+<div class="container-fluid pt-5 mt-5">
     <div class="d-lg-flex align-items-start">
         <div class="nav flex-column flex-shrink-0 nav-pills me-3 faq-nav" id="faq-tabs" role="tablist" aria-orientation="vertical">
             <a href="#tab1" class="nav-link active" data-bs-toggle="pill" role="tab" aria-controls="tab1" aria-selected="true">

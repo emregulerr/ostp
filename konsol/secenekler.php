@@ -6,9 +6,9 @@ if(isset($_POST["secKaydet"])){
    $count = $conn->exec("UPDATE uyeler set yuvhas ='$yuvHas' where id = '$userid'");
     if ( $count ){
                 $aYuvHas=$yuvHas;
-				$yuvSon = '<span style="font-size:large;color:green;"><i class="fa fa-thumbs-o-up"></i> Yuv. Has. Değiştirildi</span><br />';
+				$yuvSon = '<span style="font-size:large;color:green;"><i class="fa-solid fa-thumbs-up"></i> Yuv. Has. Değiştirildi</span><br />';
 			}else{
-				$yuvSon= '<span style="font-size:large;color:red;"><i class="fa fa-exclamation-triangle"></i> Yuv. Has. Değiştirilemedi!</span><br />';
+				$yuvSon= '<span style="font-size:large;color:red;"><i class="fa-solid fa-triangle-exclamation"></i> Yuv. Has. Değiştirilemedi!</span><br />';
 			}
 }
 echo ' 

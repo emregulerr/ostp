@@ -3,24 +3,24 @@ if(!isset($_SESSION['bigboss'])){echo "<script>window.location.href = 'yonetici.
 if(isset($_POST['cpw'])){
 	unset($bos);
 	if(empty($_POST['firma']) && empty($_POST['npw'])){
-		$bos='<span style="font-size:large;color:red;"><i class="fa fa-exclamation-triangle"></i> Form bomboş dostum n\'aptın?!</span>';
+		$bos='<span style="font-size:large;color:red;"><i class="fa-solid fa-triangle-exclamation"></i> Form bomboş dostum n\'aptın?!</span>';
 	}{
 		if(!empty($_POST['firma'])){
 			$firma=$_POST["firma"];
 			$count = $conn->exec("UPDATE uyeler set firma ='$firma' where id = '$userid'");
 			if ( $count ){
-				$firmaSonucu = '<span style="font-size:large;color:green;"><i class="fa fa-thumbs-o-up"></i> Firma Adı Değiştirildi</span><br />';
+				$firmaSonucu = '<span style="font-size:large;color:green;"><i class="fa-solid fa-thumbs-up"></i> Firma Adı Değiştirildi</span><br />';
 			}else{
-				$firmaSonucu= '<span style="font-size:large;color:red;"><i class="fa fa-exclamation-triangle"></i> Firma Adı Değiştirilemedi!</span><br />';
+				$firmaSonucu= '<span style="font-size:large;color:red;"><i class="fa-solid fa-triangle-exclamation"></i> Firma Adı Değiştirilemedi!</span><br />';
 			}
 		}
 		if(!empty($_POST['npw'])){
 			$sifre = pass(addslashes($_POST['npw']));
 			$count = $conn->exec("UPDATE uyeler set pw ='$sifre' where id = '$userid'");
 			if ( $count ){
-				$sifreSonucu = '<span style="font-size:large;color:green;"><i class="fa fa-thumbs-o-up"></i> Şifre Değiştirildi.<br /> Yeni şifreniz: '.$_POST['npw'].'</span><br />';
+				$sifreSonucu = '<span style="font-size:large;color:green;"><i class="fa-solid fa-thumbs-up"></i> Şifre Değiştirildi.<br /> Yeni şifreniz: '.$_POST['npw'].'</span><br />';
 			}else{
-				$sifreSonucu= '<span style="font-size:large;color:red;"><i class="fa fa-exclamation-triangle"></i> Şifre Değiştirilemedi!</span><br />';
+				$sifreSonucu= '<span style="font-size:large;color:red;"><i class="fa-solid fa-triangle-exclamation"></i> Şifre Değiştirilemedi!</span><br />';
 			}
 		}
 	}

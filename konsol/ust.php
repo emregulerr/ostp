@@ -95,7 +95,7 @@ default:
     <link rel="stylesheet" type="text/css" href="../css/picker/default.time.css" /> 
     <link rel="stylesheet" type="text/css" href="../css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="../css/stil.css?v=<?=time()?>" />
-    <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.24/b-1.7.0/b-html5-1.7.0/b-print-1.7.0/fh-3.1.8/r-2.2.7/sl-1.3.2/datatables.min.css"/>
     <script src="https://code.jquery.com/jquery-latest.min.js" ></script>
@@ -320,14 +320,14 @@ default:
     <div id="anaSayfa">
         <div id="solMenu">
             <img class="menuBtn" title="OSTP - Oyun Salonu Takip Programı" src="../images/logow.png" alt="logo" />
-            <a href="index.php" class="menuBtn" title="Masalar"><i class="fa fa-gamepad fa-2x fa-fw" aria-hidden="true"></i></a>
-            <a href="satislar.php" class="menuBtn" title="Kafeterya"><i class="fa fa-coffee fa-2x fa-fw" aria-hidden="true"></i></a>
-            <a href="rokayitlar.php" class="menuBtn" title="Kayıtlar"><i class="fa fa-file-text-o fa-2x fa-fw" aria-hidden="true"></i></a>
-            <a href="yonetici.php" class="menuBtn" title="Ayarlar"><i class="fa fa-cogs fa-2x fa-fw" aria-hidden="true"></i></a>
-            <a href="../cikis.php" id="logoutBtn" class="menuBtn" title="Çıkış Yap"><i class="fa fa-power-off fa-2x fa-fw" aria-hidden="true"></i></a>
+            <a href="index.php" class="menuBtn" title="Masalar"><i class="fa-solid fa-gamepad fa-2x fa-fw" aria-hidden="true"></i></a>
+            <a href="satislar.php" class="menuBtn" title="Kafeterya"><i class="fa-solid fa-mug-saucer fa-2x fa-fw" aria-hidden="true"></i></a>
+            <a href="rokayitlar.php" class="menuBtn" title="Kayıtlar"><i class="fa-solid fa-file-lines fa-2x fa-fw" aria-hidden="true"></i></a>
+            <a href="yonetici.php" class="menuBtn" title="Ayarlar"><i class="fa-solid fa-gears fa-2x fa-fw" aria-hidden="true"></i></a>
+            <a href="../cikis.php" id="logoutBtn" class="menuBtn" title="Çıkış Yap"><i class="fa-solid fa-power-off fa-2x fa-fw" aria-hidden="true"></i></a>
         </div>
         <div id="icerik">
             <div id="ustBar" class="ustBar">
-                <?php echo '<div><i class="fa fa-calendar fa-fw" aria-hidden="true"></i>&nbsp;<span id="tarihim">' . date_tr('j F Y', strtotime('now')) . '</span></div>
-                <div><i class="fa fa-clock-o fa-fw"></i>&nbsp;<span id="saatim">' . date('H:i') . '</span></div>'; ?>
+                <?php echo '<div><i class="fa-solid fa-calendar fa-fw" aria-hidden="true"></i>&nbsp;<span id="tarihim">' . date_tr('j F Y', strtotime('now')) . '</span></div>
+                <div><i class="fa-solid fa-clock fa-fw"></i>&nbsp;<span id="saatim">' . date('H:i') . '</span></div>'; ?>
             </div>
