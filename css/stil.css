@@ -292,10 +292,6 @@ button:hover {
     margin: 0;
 }
 
-.veri tr:nth-child(even) {
-    background-color: #EAEAEA;
-}
-
 .veri td {
     padding: 10px 5px;
     border: 1px solid #999999;
