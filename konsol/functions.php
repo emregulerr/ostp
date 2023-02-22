@@ -81,7 +81,7 @@ function gzf($zaman,$bfiyat,$fiyat,$yuvHas=0,$kafeterya=0){//HERŞEYi YAPAN FONK
     if(floor($fark / $hour) > 0){$ahour= floor($fark / $hour);$fark=$fark -(floor($fark / $hour) * $hour);}else{$ahour=0;}
     if(floor($fark / $min) > 0){$amin= floor($fark / $min);$fark=$fark -(floor($fark / $min) * $min);}else{$amin=0;}
     //if(floor($fark / $sec) > 0){$asec= floor($fark / $sec);$fark=$fark -(floor($fark / $sec) * $sec);}else{$asec=0;}
-    //print
+
     $print = "";
     $ayear > 0 ? $print.=$ayear." yıl ": "";
     $amonth > 0 ? $print.=$amonth." ay ": "";
@@ -93,22 +93,6 @@ function gzf($zaman,$bfiyat,$fiyat,$yuvHas=0,$kafeterya=0){//HERŞEYi YAPAN FONK
 
     $gzf["sure"]=$print;
 
-    /* ESKİ FİYAT HESAPLAMA FONKSİYONU */
-    /*
-    if($ahour<=0 && $aday<=0 && $aweek<=0 && $amonth<=0){
-        if($amin<1){
-            $ucret=0;
-        }elseif($amin<=30){
-            $ucret=$bfiyat;
-        }else{
-            $dakikafiyat = $bfiyat/30;
-            $ucret=$dakikam*$dakikafiyat;
-        }
-    }else{
-        $dakikafiyat = $fiyat/60;
-        $ucret=$dakikam*$dakikafiyat;
-    }
-    */
     $dakikafiyat = $fiyat/60;
     $ucret=max($dakikam*$dakikafiyat,$bfiyat); 
 
@@ -120,8 +104,42 @@ function gzf($zaman,$bfiyat,$fiyat,$yuvHas=0,$kafeterya=0){//HERŞEYi YAPAN FONK
             $ucret=round($ucret);
             break;
         case 3:
+        
+            /**
+             * $kalan=fmod($ucret, 5.0);
+             * $ucret = ($kalan>=2.5) ? ($ucret+(5-$kalan)) : ($ucret-$kalan);
+             **/
+
+            /**
+             * son saatlik donguyu de tamamlarsa ne kadar odeyecek? 
+             * @var saatlik
+             **/
+            $masaSuresi = time() - $zaman;
+            $saatlik = ceil($masaSuresi/3600)*$fiyat;
             $kalan=fmod($ucret, 5.0);
-            $ucret = ($kalan>=2.5) ? ($ucret+(5-$kalan)) : ($ucret-$kalan);
+            $usteYuvarlanmis = $ucret + (5-$kalan);
+            $altaYuvarlanmis = $ucret - $kalan;
+            /**
+             *
+             * aşağıdaki formül
+             * 5'in katlarına yuvarlarken 
+             * saatlik ücret 5in katı değil ise
+             * yakın olan değere yuvarlar (saatlik ücrete veya 5 in katına)
+             * bu durum kullanıcı tarafından belirlenen 
+             * saatlik ücretin yuvarlanmasını önler
+             *
+             * örneğin;
+             * saatlik ücret 17 TL ise,
+             * yuvarlama hassasiyeti 5 TL iken
+             * 53 dk. ücretini 20 TL yapmasını önler 
+             * (17 TL yapar)
+             * 
+             **/
+            if ($kalan >= 2.5) {
+                $ucret = (abs($usteYuvarlanmis - $ucret) < abs($saatlik - $ucret)) ? $usteYuvarlanmis : $saatlik;
+            }else{
+                $ucret = (abs($altaYuvarlanmis - $ucret) < abs($saatlik - $ucret)) ? $altaYuvarlanmis : $saatlik;
+            }
             break;
     }
 

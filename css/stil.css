@@ -498,23 +498,30 @@ button:hover {
 .alert {
     padding: 10px;
     margin: 0 0 10px 0;
-    background-color: #f44336;
-    color: white;
+    background-color: #cfe2ff;
+    color: #0a58ca;
     font-size: 15px;
-    font-family: monospace;
+    font-family: Arial;
     width: 100%;
     text-align: center;
+    border:1px solid #9ec5fe;
 }
 
 .closebtn {
     margin-left: 15px;
-    color: white;
+    color: #0a58ca;
     font-weight: bold;
     float: right;
     font-size: 22px;
     line-height: 20px;
     cursor: pointer;
     transition: 0.3s;
+}
+
+.alert a, .alert a:hover, .alert a:visited, .alert a:active{
+    text-decoration: underline;
+    color: #0a58ca;
+    font-weight:bold;
 }
 
 .closebtn:hover {
