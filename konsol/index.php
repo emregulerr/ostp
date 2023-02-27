@@ -25,13 +25,8 @@ if(isset($_GET["ac"])){
 
 $query = $conn->query("SELECT * FROM uyeler WHERE id = '$userid'")->fetch(PDO::FETCH_ASSOC);
 
-echo '
+echo '<div class="welcomeBox"><b>'.$query['firma'].'</b></div>';
 
-<div class="welcomeBox"><b>'.$query['firma'].'</b></div>';
-echo '
-<div class="alert">
-  <strong>Önemli Bilgilendirme</strong><br><br><small>Yuvarlama Hassasiyeti algoritmasında değişiklik yapılmıştır. <br> Yuvarlama hassasiyeti ₺5 olarak ayarlanmış kullanıcıların ücret hesaplamalarını mutlaka kontrol etmelerini ve değişiklik ile ilgili <a href="https://t.me/egulernet" title="Geri Bildirim" target="_blank">geri bildirim</a> vermelerini rica ederiz. </small>
-</div>';
 ?>
 
 

@@ -10,7 +10,7 @@
 <section id="login" style="min-height:100vh">
     <div class="overlay" style="min-height:100vh">
         <div class="container">
-            <?php if (!isset($_POST['skipdonate'])) { ?>
+            <?php if (!isset($_POST['skipdonate']) && !isset($_GET['skipdonate'])) { ?>
             <div class="card">
                 <div class="card-header text-center text-muted">📢&emsp;OSTP Desteğini Bekliyor!</div>
                 <div class="card-body text-muted">
@@ -52,6 +52,7 @@
                             <div class="col">
                                 <input pattern="^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$" type="password" class="form-control" placeholder="********" name="pw" size="10" title="En az; 8 karakter, 1 büyük harf, 1 küçük harf, 1 rakam" required>
                             </div>
+                            <input type="hidden" name="to" value="<?php echo ((!empty($_GET['to'])) ? htmlentities($_GET['to']) : "no-redirect");?>">
                             <div class="col">
                                 <input type="submit" class="form-control text-uppercase" value="GİRİŞ YAP">
                             </div>

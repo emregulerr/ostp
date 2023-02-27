@@ -12,6 +12,19 @@ if (!isset($_SESSION['patron'])) {
 		if ($query) {
 			if ($sifre == $query['pw']) {
 				$_SESSION['patron'] = $query['id'];
+                if (!empty($_POST['to']) && $_POST['to'] != "no-redirect") {
+                    echo '
+                    <form id="redirectForm" action="'.$_POST['to'].'" method="post">';
+                        foreach ($query as $a => $b) {
+                            echo '<input type="hidden" name="'.htmlentities($a).'" value="'.htmlentities($b).'">';
+                        }
+                    echo '<input type="hidden" name="loginWithOSTP" value="true">';
+                    echo '</form>
+                    <script type="text/javascript">
+                        document.getElementById(\'redirectForm\').submit();
+                    </script>';
+                    exit();
+                }
 			} else {
 				echo "<script>window.location.href = '../psct.php?giris=basarisiz';</script>";
 			}
@@ -42,28 +55,28 @@ case stristr($sayfamiz, 'rokayitlar'):
 	$title = 'Kayıtlar - ';
 	break;
 case stristr($sayfamiz, 'yonetici'):
-	$title = 'Ayarlar - ';
+	$title = 'Yönetici Girişi - ';
 	break;
 case stristr($sayfamiz, 'ayar.php'):
 	$title = 'Ayarlar - ';
 	break;
 case stristr($sayfamiz, 'masalar.php'):
-	$title = 'Ayarlar - ';
+	$title = 'Masa Ayarları - ';
 	break;
 case stristr($sayfamiz, 'tarifeler.php'):
-	$title = 'Ayarlar - ';
+	$title = 'Tarife Ayarları - ';
 	break;
 case stristr($sayfamiz, 'kafeterya.php'):
-	$title = 'Ayarlar - ';
+	$title = 'Kafeterya Ayarları - ';
 	break;
 case stristr($sayfamiz, 'kayitlar.php'):
-	$title = 'Ayarlar - ';
+	$title = 'Adisyonlar - ';
 	break;
 case stristr($sayfamiz, 'secenekler.php'):
-	$title = 'Ayarlar - ';
+	$title = 'Seçenekler - ';
 	break;
 case stristr($sayfamiz, 'hesap.php'):
-	$title = 'Ayarlar - ';
+	$title = 'Hesap Ayarları - ';
 	break;
 case stristr($sayfamiz, 'masa.php'):
 	$title = 'Masa - ';
@@ -331,3 +344,22 @@ default:
                 <?php echo '<div><i class="fa-solid fa-calendar fa-fw" aria-hidden="true"></i>&nbsp;<span id="tarihim">' . date_tr('j F Y', strtotime('now')) . '</span></div>
                 <div><i class="fa-solid fa-clock fa-fw"></i>&nbsp;<span id="saatim">' . date('H:i') . '</span></div>'; ?>
             </div>
+            <?php 
+                try {
+                    $duyurular = $conn->query("SELECT * FROM duyurular")->fetchAll(PDO::FETCH_ASSOC);
+                } catch (PDOException $e) {
+                    echo '<script>console.log("Bir sorun oluştu!");</script>';
+                }
+                if ($duyurular) {
+                    foreach ($duyurular as $duyuru) {
+                        echo '<div class="alert alert-'.$duyuru['tip'].'" role="alert">';
+                        if ($duyuru['baslik']) {
+                            echo '<h4 class="alert-heading">'.$duyuru['baslik'].'</h4>';
+                        }
+                        if ($duyuru['ikon']) {
+                            echo '<i class="fa fa-'.$duyuru['ikon'].'"></i>&emsp;';
+                        }
+                        echo $duyuru['icerik'].'</div>';
+                    }
+                }
+            ?>
