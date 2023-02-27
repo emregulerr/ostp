@@ -511,6 +511,7 @@ button:hover {
 
 .alert a {
   font-weight: bold;
+  text-decoration:none;
 }
 
 .alert > p,
