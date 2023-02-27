@@ -26,10 +26,10 @@ if (!isset($_SESSION['patron'])) {
                     exit();
                 }
 			} else {
-				echo "<script>window.location.href = '../psct.php?giris=basarisiz';</script>";
+				echo "<script>window.location.href = '../psct.php?giris=basarisiz&skipdonate=true';</script>";
 			}
 		} else {
-			echo "<script>window.location.href = '../psct.php?giris=basarisiz';</script>";
+			echo "<script>window.location.href = '../psct.php?giris=basarisiz&skipdonate=true';</script>";
 		}
 	} else {
 		echo "<script>window.location.href = '../psct.php';</script>";
