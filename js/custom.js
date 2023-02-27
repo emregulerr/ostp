@@ -1,10 +1,11 @@
 // preloader
 $(window).on('load',function () {
-    $('.preloader').fadeOut(1000); // set duration in brackets
+    $('.preloader').fadeOut(1000);
     $('input[name*="tel"]').inputmask("(999) 999-9999", {
         'removeMaskOnSubmit': true,
         'clearIncomplete': false
     });
+    $('input[name*="mail"]').inputmask("email");
 });
 
 // collapse mobil nav on click

@@ -2,9 +2,6 @@
 <?php
 if (isset($_GET["sonuc"])) {$sonuc = $_GET["sonuc"];}else{$sonuc = 3;}
 if (isset($_POST["firm"])) {
-	$firm = $_POST["firm"];
-	$isim = $_POST["name"];
-	$tel = $_POST["tel"];
 	$sifre = $_POST["pw"];
 	$msifre = $_POST["mpw"];
 	$pw = pass($_POST["pw"]);
@@ -17,13 +14,14 @@ if (isset($_POST["firm"])) {
 	$isim = trim(filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING));
 	$firm = trim(filter_input(INPUT_POST, 'firm', FILTER_SANITIZE_STRING));
 	$tel = trim(filter_input(INPUT_POST, 'tel', FILTER_SANITIZE_STRING));
+	$mail = trim(filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_STRING));
 	$ip = getIPNew();
-	$yokla = $conn->query("SELECT id FROM uyeler WHERE tel='{$tel}' OR ip='{$ip}'")->fetch(PDO::FETCH_COLUMN);
+	$yokla = $conn->query("SELECT id FROM uyeler WHERE tel='{$tel}' OR ip='{$ip}' OR mail='{$mail}'")->fetch(PDO::FETCH_COLUMN);
 	if ($yokla) {
 		$sonuc = 5;
 	} else {
 		try {
-			$sorgu = $conn->prepare("INSERT INTO uyeler (tel, pw, mpw, atarih, dtarih, isim, firma, durum, yuvhas,ip) VALUES (:tel,:pw,:mpw,:atarih,:dtarih,:isim,:firma,:durum,:yuvhas,:ip)");
+			$sorgu = $conn->prepare("INSERT INTO uyeler (tel, pw, mpw, atarih, dtarih, isim, firma, durum, yuvhas,ip, mail) VALUES (:tel,:pw,:mpw,:atarih,:dtarih,:isim,:firma,:durum,:yuvhas,:ip,:mail)");
 			$sorgu->bindParam(':tel', $tel);
 			$sorgu->bindParam(':pw', $pw);
 			$sorgu->bindParam(':mpw', $mpw);
@@ -34,6 +32,7 @@ if (isset($_POST["firm"])) {
 			$sorgu->bindParam(':durum', $durum);
 			$sorgu->bindParam(':yuvhas', $yuvhas);
 			$sorgu->bindParam(':ip', $ip);
+			$sorgu->bindParam(':mail', $mail);
 			$sorgu->execute();
 			$sonuc = 1;
 		} catch (PDOException $e) {
@@ -51,9 +50,7 @@ if (isset($_POST["firm"])) {
 						if ($sonuc == 1) {
 							echo '<div class="alert alert-success"><strong>Üyelik oluşturuldu!</strong> <a href="/psct.php">Giriş yap</a>arak ücretsiz OSTP üyeliğinizi kullanmaya başlayabilirsiniz.</div>';
 						} elseif ($sonuc == 0) {
-							echo '<div class="alert alert-danger"><strong>Hata!</strong> Form gönderilirken bir hata oluştu. Lütfen iletisim@eguler.net üzerinden bize bildirin.</div>';
-						} elseif ($sonuc == 4) {
-							//echo '<div class="alert alert-info"><strong>Önemli!</strong> Satın alma için önce üyelik oluşturmanız gerekir. Daha sonra sizi teyit ve bilgilendirme için ararız. Son olarak verdiğimiz bilgiler ışığında ödemeyi yaparsınız ve üyeliğiniz tamamlanır.</div>';
+							echo '<div class="alert alert-danger"><strong>Hata!</strong> Form gönderilirken bir hata oluştu. Lütfen iletişim bölümünden bu durumu bize bildirin.</div>';
 						} elseif ($sonuc == 5) {
 							echo '<div class="alert alert-danger"><strong>Dikkat!</strong> Zaten daha önce bir üyelik oluşturmuşsunuz. Lütfen <a href="/psct.php">giriş yap</a>ınız.</div>';
 						}
@@ -71,6 +68,9 @@ if (isset($_POST["firm"])) {
 		                    </div>
 		                    <div class="col">
 		                        <input type="text" class="form-control" placeholder="Telefon" name="tel" autocomplete="on" required>
+		                    </div>
+		                    <div class="col">
+		                        <input type="text" class="form-control" placeholder="E-Posta" name="mail" autocomplete="on" required>
 		                    </div>
 		                    <div class="col">
 		                        <input pattern="^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$" type="password" class="form-control" placeholder="Şifre" name="pw" size="10" title="En az; 8 karakter, 1 büyük harf, 1 küçük harf, 1 rakam" required>
