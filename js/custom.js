@@ -5,7 +5,7 @@ $(window).on('load',function () {
         'removeMaskOnSubmit': true,
         'clearIncomplete': false
     });
-    $('input[name*="mail"]').inputmask("email");
+    $('input[name*="mail"]').inputmask("email",{"clearIncomplete":true});
 });
 
 // collapse mobil nav on click
