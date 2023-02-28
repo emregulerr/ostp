@@ -13,17 +13,21 @@ if (!isset($_SESSION['patron'])) {
 			if ($sifre == $query['pw']) {
 				$_SESSION['patron'] = $query['id'];
                 if (!empty($_POST['to']) && $_POST['to'] != "no-redirect") {
-                    echo '
-                    <form id="redirectForm" action="'.$_POST['to'].'" method="post">';
-                        foreach ($query as $a => $b) {
-                            echo '<input type="hidden" name="'.htmlentities($a).'" value="'.htmlentities($b).'">';
-                        }
-                    echo '<input type="hidden" name="loginWithOSTP" value="true">';
-                    echo '</form>
-                    <script type="text/javascript">
-                        document.getElementById(\'redirectForm\').submit();
-                    </script>';
-                    exit();
+                    if (empty($query['mail'])) {
+                        $mailError = true;
+                    }else{
+                        echo '
+                        <form id="redirectForm" action="'.$_POST['to'].'" method="post">';
+                            foreach ($query as $a => $b) {
+                                echo '<input type="hidden" name="'.htmlentities($a).'" value="'.htmlentities($b).'">';
+                            }
+                        echo '<input type="hidden" name="loginWithOSTP" value="true">';
+                        echo '</form>
+                        <script type="text/javascript">
+                            document.getElementById(\'redirectForm\').submit();
+                        </script>';
+                        exit();
+                    }
                 }
 			} else {
 				echo "<script>window.location.href = '../psct.php?giris=basarisiz&skipdonate=true';</script>";
@@ -105,7 +109,7 @@ default:
     <link rel="stylesheet" type="text/css" href="../css/select2-bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/picker/default.css" />
     <link rel="stylesheet" type="text/css" href="../css/picker/default.date.css" />
-    <link rel="stylesheet" type="text/css" href="../css/picker/default.time.css" /> 
+    <link rel="stylesheet" type="text/css" href="../css/picker/default.time.css" />
     <link rel="stylesheet" type="text/css" href="../css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="../css/stil.css?v=<?=time()?>" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -119,7 +123,7 @@ default:
     <script type="text/javascript" src="../js/picker/picker.date.js"></script>
     <script type="text/javascript" src="../js/picker/picker.time.js"></script>
     <script type="text/javascript" src="../js/picker/legacy.js"></script>
-    <script type="text/javascript" src="../js/picker/tr_TR.js"></script>  
+    <script type="text/javascript" src="../js/picker/tr_TR.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.24/b-1.7.0/b-html5-1.7.0/b-print-1.7.0/fh-3.1.8/r-2.2.7/sl-1.3.2/datatables.min.js"></script>
@@ -344,11 +348,16 @@ default:
                 <?php echo '<div><i class="fa-solid fa-calendar fa-fw" aria-hidden="true"></i>&nbsp;<span id="tarihim">' . date_tr('j F Y', strtotime('now')) . '</span></div>
                 <div><i class="fa-solid fa-clock fa-fw"></i>&nbsp;<span id="saatim">' . date('H:i') . '</span></div>'; ?>
             </div>
-            <?php 
+            <?php
                 try {
                     $duyurular = $conn->query("SELECT * FROM duyurular")->fetchAll(PDO::FETCH_ASSOC);
                 } catch (PDOException $e) {
                     echo '<script>console.log("Bir sorun oluştu!");</script>';
+                }
+                if (isset($mailError) && $mailError == true) {
+                    echo '<div class="alert alert-danger" role="alert">
+                        <strong>Hata!</strong> OSTP Destek\'e giriş yapabilmek için hesabınıza e-posta adresinizi eklemeniz gerekmektedir. Hesap ayarlarından eposta adresinizi ekledikten sonra tekrar deneyin.
+                    </div>';
                 }
                 if ($duyurular) {
                     foreach ($duyurular as $duyuru) {

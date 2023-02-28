@@ -10,7 +10,10 @@
 <section id="login" style="min-height:100vh">
     <div class="overlay" style="min-height:100vh">
         <div class="container">
-            <?php if (!isset($_POST['skipdonate']) && !isset($_GET['skipdonate'])) { ?>
+            <?php
+            //if (!isset($_POST['skipdonate']) && !isset($_GET['skipdonate'])) {
+            if (false) { // temporary to hide the donation card
+            ?>
             <div class="card">
                 <div class="card-header text-center text-muted">📢&emsp;OSTP Desteğini Bekliyor!</div>
                 <div class="card-body text-muted">
