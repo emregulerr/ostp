@@ -54,7 +54,7 @@ $adisyonsayisi = $conn->query("SELECT COUNT(*) FROM kayitlar")->fetchColumn();
 		              <a class="nav-link" href="index.php#iletisim">İLETİŞİM</a>
 		            </li>
 		            <li class="nav-item mx-lg-2 my-2 my-lg-0">
-		                <button onclick="window.location.href = 'rehber.php';" class="btn btn-warning text-uppercase"><i class="fa fa-book"></i> REHBER</button>
+		                <button onclick="window.location.href = 'destek';" class="btn btn-warning text-uppercase"><i class="fa fa-book"></i> DESTEK</button>
 		            </li>
 		            <li class="nav-item mx-lg-2 my-2 my-lg-0">
 		                <button onclick="window.location.href = 'kaydet.php';" class="btn btn-success text-uppercase"><i class="fa fa-user-plus"></i> ÜCRETSİZ ÜYE OL</button>
