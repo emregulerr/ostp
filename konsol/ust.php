@@ -38,6 +38,24 @@ if (!isset($_SESSION['patron'])) {
 	} else {
 		echo "<script>window.location.href = '../psct.php';</script>";
 	}
+}else{
+    if (!empty($_POST['to']) && $_POST['to'] != "no-redirect") {
+        if (empty($query['mail'])) {
+            $mailError = true;
+        }else{
+            echo '
+            <form id="redirectForm" action="'.$_POST['to'].'" method="post">';
+                foreach ($query as $a => $b) {
+                    echo '<input type="hidden" name="'.htmlentities($a).'" value="'.htmlentities($b).'">';
+                }
+            echo '<input type="hidden" name="loginWithOSTP" value="true">';
+            echo '</form>
+            <script type="text/javascript">
+                document.getElementById(\'redirectForm\').submit();
+            </script>';
+            exit();
+        }
+    }
 }
 $userid = $_SESSION['patron']??'0';
 $ip = getIPNew();
