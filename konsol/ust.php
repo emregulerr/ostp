@@ -39,6 +39,7 @@ if (!isset($_SESSION['patron'])) {
 		echo "<script>window.location.href = '../psct.php';</script>";
 	}
 }else{
+    $query = $conn->query("SELECT * FROM uyeler WHERE tel = '" . $_POST['tel'] . "'")->fetch(PDO::FETCH_ASSOC);
     if (!empty($_POST['to']) && $_POST['to'] != "no-redirect") {
         if (empty($query['mail'])) {
             $mailError = true;
