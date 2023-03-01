@@ -39,23 +39,27 @@ if (!isset($_SESSION['patron'])) {
 		echo "<script>window.location.href = '../psct.php';</script>";
 	}
 }else{
-    $query = $conn->query("SELECT * FROM uyeler WHERE tel = '" . $_POST['tel'] . "'")->fetch(PDO::FETCH_ASSOC);
-    if (!empty($_POST['to']) && $_POST['to'] != "no-redirect") {
-        if (empty($query['mail'])) {
-            $mailError = true;
-        }else{
-            echo '
-            <form id="redirectForm" action="'.$_POST['to'].'" method="post">';
-                foreach ($query as $a => $b) {
-                    echo '<input type="hidden" name="'.htmlentities($a).'" value="'.htmlentities($b).'">';
-                }
-            echo '<input type="hidden" name="loginWithOSTP" value="true">';
-            echo '</form>
-            <script type="text/javascript">
-                document.getElementById(\'redirectForm\').submit();
-            </script>';
-            exit();
+    $query = $conn->query("SELECT * FROM uyeler WHERE id = '" . $_SESSION['patron'] . "'")->fetch(PDO::FETCH_ASSOC);
+    if ($query) {
+        if (!empty($_POST['to']) && $_POST['to'] != "no-redirect") {
+            if (empty($query['mail'])) {
+                $mailError = true;
+            }else{
+                echo '
+                <form id="redirectForm" action="'.$_POST['to'].'" method="post">';
+                    foreach ($query as $a => $b) {
+                        echo '<input type="hidden" name="'.htmlentities($a).'" value="'.htmlentities($b).'">';
+                    }
+                echo '<input type="hidden" name="loginWithOSTP" value="true">';
+                echo '</form>
+                <script type="text/javascript">
+                    document.getElementById(\'redirectForm\').submit();
+                </script>';
+                exit();
+            }
         }
+    }else{
+        echo "<script>window.location.href = '../psct.php?giris=basarisiz&skipdonate=true';</script>";
     }
 }
 $userid = $_SESSION['patron']??'0';
