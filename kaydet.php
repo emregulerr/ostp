@@ -59,7 +59,7 @@ if (isset($_POST["firm"])) {
 		        <div class="col-md-12 col-lg-6">
 		            <h2 class="text-uppercase">ÜYELİK OLUŞTUR</h2>
 		            <div class="contact-form justify-content-center">
-		                <form method="post">
+		                <form id="registerForm" method="post">
 		                    <div class="col">
 		                        <input type="text" class="form-control" placeholder="Firma Adı" name="firm" autocomplete="on" required>
 		                    </div>
@@ -79,7 +79,7 @@ if (isset($_POST["firm"])) {
 		                        <input pattern="^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$" type="password" class="form-control" placeholder="Yönetici Şifresi" name="mpw" size="10" title="En az; 8 karakter, 1 büyük harf, 1 küçük harf, 1 rakam" required>
 		                    </div>
 		                    <div class="col">
-		                        <input type="submit" class="form-control text-uppercase" value="OLUŞTUR">
+		                        <input type="submit" id="submitRegister" class="form-control text-uppercase" value="OLUŞTUR">
 		                    </div>
 		                </form>
 		            </div>
@@ -88,4 +88,15 @@ if (isset($_POST["firm"])) {
         </div>
     </div>
 </section>
+<script>
+	$(document).ready(function () {
+        $("#registerForm").submit(function (e) {
+            //stop submitting the form to see the disabled button effect
+            e.preventDefault();
+            //disable the submit button
+            $("#submitRegister").attr("disabled", true);
+            return true;
+        });
+    });
+</script>
 <?php require_once 'alt.php'; ?>
