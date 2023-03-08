@@ -44,6 +44,8 @@ if($query){?>
 
 			<option value="../images/konsol/ps4pro.jpg">PlayStation 4 Pro</option>
 
+			<option value="../images/konsol/ps5.jpg">PlayStation 5</option>
+
 			<option value="../images/konsol/psvr.jpg">PlayStation VR</option>
 
 			<option value="../images/konsol/htcvr.jpg">HTC VIVE VR</option>
