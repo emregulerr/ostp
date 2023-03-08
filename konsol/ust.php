@@ -364,6 +364,7 @@ default:
             <a href="satislar.php" class="menuBtn" title="Kafeterya"><i class="fa-solid fa-mug-saucer fa-2x fa-fw" aria-hidden="true"></i></a>
             <a href="rokayitlar.php" class="menuBtn" title="Kayıtlar"><i class="fa-solid fa-file-lines fa-2x fa-fw" aria-hidden="true"></i></a>
             <a href="yonetici.php" class="menuBtn" title="Ayarlar"><i class="fa-solid fa-gears fa-2x fa-fw" aria-hidden="true"></i></a>
+            <a href="../destek" id="supportBtn" class="menuBtn" title="Destek" style="color:#ffda6a" target="_blank"><i class="fa-solid fa-circle-question fa-2x fa-fw" aria-hidden="true"></i></a>
             <a href="../cikis.php" id="logoutBtn" class="menuBtn" title="Çıkış Yap"><i class="fa-solid fa-power-off fa-2x fa-fw" aria-hidden="true"></i></a>
         </div>
         <div id="icerik">
